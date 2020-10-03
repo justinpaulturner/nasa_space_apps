@@ -1,5 +1,6 @@
 # LARGE DIRECTORIES
-data/
+data/train/*
+data/val/*
 
 # MODELS
 *.h5
