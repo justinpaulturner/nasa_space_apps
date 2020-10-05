@@ -38,7 +38,7 @@ class Fire:
     def generate_schools_in_danger(self):
         """Runs Jared's code to save a dataframe that identifies the schools in danger."""
         # Jared's code that uses numpy
-        # saves a danger_schools_df or adds an 'in-dnager' column to self.school_df with bool values.
+        # adds an 'in-dnager' column to self.school_df with bool values.
         
     def generate_new_image(self):
         """Generates the new image of just the schools within 2 km of a fire."""
