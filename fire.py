@@ -23,20 +23,13 @@ class Fire:
         return int(datetime.now().strftime("%H"))
         
     def distance_to_fire(self,fire_location,school_location):
-        # approximate radius of earth in km
-        R = 6373.0
-
-        lat1 = radians(fire_location[0])
-        lon1 = radians(fire_location[1])
-        lat2 = radians(school_location[0])
-        lon2 = radians(school_location[1])
-
+        R = 6373.0 # approximate radius of earth in km
+        lat1, lon1 = radians(fire_location[0]), radians(fire_location[1])
+        lat2, lon2 = radians(school_location[0]), radians(school_location[1])
         dlon = lon2 - lon1
         dlat = lat2 - lat1
-
         a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
         c = 2 * atan2(sqrt(a), sqrt(1 - a))
-
         distance = R * c
 
         return distance
@@ -49,6 +42,7 @@ class Fire:
     def save_schools(self):
         """overwrites the school_list.txt file with the updated list of schools in danger."""
         # code to open the school_list.txt file and overwrite the schools with the new schools in danger
+        self.school_df[self.school_df['in_danger']==1]['NAME'].to_csv('flaskapp/flaskr/statis/school_list.txt', sep=' ', index=False)
         
     def generate_new_image(self):
         """Generates the new image of just the schools within 2 km of a fire."""
@@ -66,4 +60,4 @@ class Fire:
         fig.savefig("flaskapp/flaskr/static/image.png")
         
         
-        #school_list.txt
+        
