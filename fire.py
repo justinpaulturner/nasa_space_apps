@@ -7,7 +7,7 @@ import seaborn as sns
 from shapely.geometry import Point, Polygon
 import geopandas as gpd
 from geopandas import GeoDataFrame
-
+from datetime import datetime
 
 
 class Fire:
@@ -15,6 +15,12 @@ class Fire:
         self.school_df = pd.read_csv("data/school data/Public_Schools.csv")
         self.school_df = self.school_df[(self.school_df['COUNTRY']=='USA')&(self.school_df['STATE']!='AK')&(self.school_df['STATE']!='HI')]
         self.school_df = pd.DataFrame(self.school_df[['NAME','LATITUDE','LONGITUDE']])
+        
+    def current_hour(self):
+        """
+        Returns the integer of the number of the current hour
+        """
+        return int(datetime.now().strftime("%H"))
         
     def distance_to_fire(self,fire_location,school_location):
         # approximate radius of earth in km
@@ -40,6 +46,10 @@ class Fire:
         # Jared's code that uses numpy
         # adds an 'in-dnager' column to self.school_df with bool values.
         
+    def save_schools(self):
+        """overwrites the school_list.txt file with the updated list of schools in danger."""
+        # code to open the school_list.txt file and overwrite the schools with the new schools in danger
+        
     def generate_new_image(self):
         """Generates the new image of just the schools within 2 km of a fire."""
         geometry = [Point(xy) for xy in zip(self.school_df[self.school_df['in-danger']==1]['LONGITUDE'], self.school_df[self.school_df['in-danger']==1]['LATITUDE'])]
@@ -54,3 +64,6 @@ class Fire:
         world_plot.set_xlabel("Longitude")
         fig = gdf.plot(ax=world_plot, marker='o', color='red', markersize=1).get_figure()
         fig.savefig("flaskapp/flaskr/static/image.png")
+        
+        
+        #school_list.txt
