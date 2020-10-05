@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel= "stylesheet" type="text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+    <title>Fire Evacuations for Schools</title>
+    <style>
+      body { background-color: YellowGreen; }
+      h1 { color: #008000; }
+      p { color: red; }
+    </style>
+    <!-- <meta charset="utf-8"> -->
+</head>
+<body>
+  <h1 class="logo"> Fire Evacuations for Schools </h1>
+  <div class="verticalhorizontal">
+    <img src="{{url_for('static',filename='image.png')}}" alt="USA Image">
+  </div>
+
+  <pre>{{ content }}</pre>
+
+</body>
+</html>
