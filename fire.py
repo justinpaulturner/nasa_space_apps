@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 class Fire:
-    def __init__(self, danger_radius=20, sample_size=1000):
+    def __init__(self, danger_radius=20, sample_size=2000):
         self.school_df = pd.read_csv("data/school data/Public_Schools.csv")
 
         if sample_size:
@@ -89,7 +89,7 @@ class Fire:
     def save_schools(self):
         """overwrites the school_list.txt file with the updated list of schools in danger."""
         # code to open the school_list.txt file and overwrite the schools with the new schools in danger
-        self.danger_df[['name']].to_csv('flaskapp/flaskr/static/school_list.txt', sep=' ', index=False)
+        self.danger_df[['name']].to_csv('flaskapp/flaskr/static/school_list.txt', sep=' ', header=['Schools in Proximity to Fire'], index=False)
         
     def generate_new_image(self):
         """Generates the new image of just the schools within 2 km of a fire."""
