@@ -16,13 +16,14 @@ header {
 }
 header h1.logo {
   margin: 0;
-  font-size: 1.7em;
-  color: #fff;
+  font-size: 20px;
+  color: #6b34eb;
   text-transform: uppercase;
   float: left;
+  text-align: center;
 }
 header h1.logo:hover {
-  color: #fff;
+  color: #6b34eb;
   text-decoration: none;
 }
 /*
