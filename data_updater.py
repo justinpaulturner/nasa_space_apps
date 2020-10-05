@@ -4,7 +4,7 @@ import time
 
 try:
     f = Fire()
-    hour = d.current_hour()
+    hour = f.current_hour()
     f.generate_schools_in_danger()
     f.save_schools()
     f.generate_new_image()
@@ -16,7 +16,7 @@ except Exception as e:
 while hour != f.current_hour():
     try:
         f = Fire()
-        hour = d.current_hour()
+        hour = f.current_hour()
         f.generate_schools_in_danger()
         f.save_schools()
         f.generate_new_image()
