@@ -9,12 +9,18 @@ from datetime import datetime
 
 
 class Fire:
-    def __init__(self, danger_radius=2):
+    def __init__(self, danger_radius=20, sample_size=1000):
         self.school_df = pd.read_csv("data/school data/Public_Schools.csv")
+
+        if sample_size:
+            self.school_df = self.school_df.sample(sample_size)
+
         self.school_df = self.school_df[(self.school_df['COUNTRY']=='USA')&(self.school_df['STATE']!='AK')&(self.school_df['STATE']!='HI')]
         # self.school_df = pd.DataFrame(self.school_df[['NAME','LATITUDE','LONGITUDE']])
         self.school_df.rename(columns=str.lower, inplace=True)
         self.fire_df = pd.read_csv('https://firms.modaps.eosdis.nasa.gov/data/active_fire/c6/csv/MODIS_C6_USA_contiguous_and_Hawaii_24h.csv')
+
+        # self.fire_df = self.fire_df.iloc[150:250, :]
 
         self.danger_radius = danger_radius
         self.all_distances = None
@@ -64,9 +70,9 @@ class Fire:
         fire_arr = self.fire_df[['latitude', 'longitude']].values
 
         afc = self.all_flat_combinations(school_arr, fire_arr)
-        print('afc calculated')
+        print('all combinations generated')
         self.all_distances = np.apply_along_axis(self.proximity, 1, afc)
-        print('distances calc')
+        print('all distances calculated')
 
         afc_len = afc.shape[0]
         n_fires = fire_arr.shape[0]
@@ -97,8 +103,7 @@ class Fire:
         world_plot.set_ylim([25,50])
         world_plot.set_ylabel("Latitude")
         world_plot.set_xlabel("Longitude")
-        fig = gdf.plot(ax=world_plot, marker='o', color='red', markersize=1).get_figure()
+        fig = gdf.plot(ax=world_plot, marker='o', color='red', markersize=10).get_figure()
         fig.savefig("flaskapp/flaskr/static/image.png")
-        
         
         
