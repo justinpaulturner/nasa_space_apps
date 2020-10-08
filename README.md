@@ -1,3 +1,5 @@
+![Worlds](https://github.com/justinpaulturner/nasa_space_apps/blob/main/photos/Worlds.jpg)
+
 # Fire Detection For School Evacuation Notices
 
 ### Summary and Motivation
