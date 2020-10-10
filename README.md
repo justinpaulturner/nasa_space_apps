@@ -3,7 +3,7 @@
 # Fire Detection For School Evacuation Notices
 
 ### Summary and Motivation
-This project is a public Flask web app that identifies fires from a real-time satellite data feed and gives evacuation notices for the nearby schools of the identified fires.The impacts and loss of life from the 2020 west coast wildfires inspired our team to develop a tool that schools can monitor to check if they need to evacuate.
+This project is a public Flask web app that identifies fires from a real-time satellite data feed and gives evacuation notices for the nearby schools of the identified fires. The impacts and loss of life from the 2020 west coast wildfires inspired our team to develop a tool that schools can monitor to check if they need to evacuate.
 
 ### How We Developed This Project
  We approached this project by setting 5 high-level goals and completing each incrementally, step-by-step.
@@ -23,3 +23,7 @@ https://hifld-geoplatform.opendata.arcgis.com/datasets/colleges-and-universities
 
 ### Project Demo
 https://docs.google.com/presentation/d/1cy4WaJZUg5uIdWnuEd-JGO5jsDit0dK39yoRacj1-8M/edit?usp=sharing
+
+### Hackathon
+This was created during NASA's 2020 International Space Apps Challenge  
+https://www.spaceappschallenge.org/
